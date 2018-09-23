@@ -38,10 +38,28 @@ type LetStatement struct {
 	Value Expression
 }
 
-func (ls *LetStatement) statementNode()       {}
+func (ls *LetStatement) statementNode() {}
+
+//TokenLiteral returns, you guessed it. A token literal.
 func (ls *LetStatement) TokenLiteral() string { return ls.Token.Literal }
 
+//Identifier ...
 type Identifier struct {
 	Token token.Token
 	Value string
 }
+
+func (i *Identifier) expressionNode()      {}
+func (i *Identifier) TokenLiteral() string { return i.Token.Literal }
+func (i *Identifier) String() string       { return i.Value }
+
+//ReturnStatement ...
+type ReturnStatement struct {
+	Token       token.Token
+	ReturnValue Expression
+}
+
+func (rs *ReturnStatement) statementNode() {}
+
+//TokenLiteral ...
+func (rs *ReturnStatement) TokenLiteral() string { return rs.Token.Literal }
